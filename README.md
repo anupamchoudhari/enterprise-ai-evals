@@ -159,4 +159,4 @@ Code: [MIT](LICENSE). Documentation and framework: [CC BY 4.0](LICENSE-docs.md).
 
 ## Author
 
-Maintained by [Anupam Choudhari](https://anupamchoudhari.com). Built on the work of the practitioners and researchers credited in the [framework overview](framework/README.md) and [LANDSCAPE.md](LANDSCAPE.md).
+Maintained by [Anupam Choudhari](https://anupamchoudhari.com). The [launch post](https://www.anupamchoudhari.com/enterprise-ai-evals/) explains why the repo exists and walks through the Planwise example. Built on the work of the practitioners and researchers credited in the [framework overview](framework/README.md) and [LANDSCAPE.md](LANDSCAPE.md).
