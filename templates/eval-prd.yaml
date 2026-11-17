@@ -1,0 +1,79 @@
+# Eval PRD, machine-readable version. It holds the same requirements as
+# templates/eval-prd.md in a form scripts can read. Engineers usually fill it in
+# from the PM's Eval PRD.
+# Copy it, fill it in, keep it under version control.
+
+format_version: "3.0"
+
+feature:
+  name: ""                     # e.g. "Help-center assistant"
+  owner_pm: ""
+  owner_eng: ""
+  packs: []                    # one or more of: rag-knowledge-assistant, enterprise-search-permissions,
+                               # nl2sql-analytics, tool-using-agents, conversational-support,
+                               # summarization-drafting, extraction-classification,
+                               # memory-personalization, people-decisions-high-risk, security-red-teaming
+  job_to_be_done: ""
+  what_good_looks_like: []     # things every good output must contain or do
+
+stakes:                        # framework/the-stakes.md
+  level: low                   # low | medium | high
+  human_checks_output: true    # does a person check the output before it takes effect?
+  who_relies_on_it: ""         # e.g. "employees, without review"
+  cost_of_mistake: ""          # e.g. "unexpected medical bill; HR escalation"
+  reason: ""
+
+hard_fails: []                 # yes/no, observable; any occurrence blocks a release
+  # - id: uses-other-tenant-docs
+  #   description: "Retrieves or cites a document outside the user's tenant or permissions"
+  #   question: safe
+  #   grader: code
+
+failure_modes: []              # from Discover, ranked by frequency and harm
+  # - id: wrong-plan-year
+  #   tag: wrong-source        # toolkit/failure-tags.md
+  #   description: ""
+  #   frequency: 0.0           # share of reviewed traces
+  #   harm: low                # low | medium | high
+
+checks: []
+  # - id: faithfulness
+  #   targets: [wrong-plan-year]
+  #   question: right        # right | safe | worth-it
+  #   grader: judge            # code | judge | human
+  #   implementation: ""       # path to code or judge prompt
+  #   calibration:             # required when grader is judge (toolkit/choosing-graders.md)
+  #     labeled_examples: 0
+  #     failures_caught: null  # TPR
+  #     good_outputs_passed: null  # TNR
+
+datasets: []
+  # - id: golden
+  #   path: ""
+  #   size: 0
+  #   source: ""               # real traffic, tickets, synthetic, expert-written
+  #   slices: []
+  #   runs_per_conversation: 5 # conversations and agent tasks: 3 (Low), 5 (Medium), 8 (High)
+  #   refreshed: ""            # ISO date
+
+pass_bars: []
+  # Metrics the grader script computes: forbidden_retrieval_rate, canary_leak_rate,
+  # forbidden_tool_call_rate, behavior_accuracy, recall_at_k,
+  # conversation_success_first_run, conversation_success_all_runs.
+  # Any other metric name is treated as a judge result.
+  # - metric: ""
+  #   check: faithfulness
+  #   dataset: golden
+  #   operator: ">="           # >=, <=, ==
+  #   threshold: 0.0
+  #   blocking: true
+
+production_signals: []         # mostly "worth it" metrics
+  # - name: ""
+  #   source: ""
+  #   expected_link: ""        # which offline check should predict it
+
+rhythm:
+  trace_review: weekly
+  golden_refresh: quarterly
+  labelers: []

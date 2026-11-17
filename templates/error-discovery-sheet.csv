@@ -1,0 +1,4 @@
+trace_id,timestamp,user_segment,user_input,output_summary,pass_fail,open_code_note,failure_tag,severity_1to5,question,fix_idea,reviewer
+t-0001,2026-11-03T10:12:00Z,admin_pro,"How do I set up single sign-on?","Gave setup steps for SSO, which the Pro plan doesn't include",FAIL,"Ignored the customer's plan; SSO is Business only",missed-constraint,4,Right,"Retrieve the plan comparison article with every setup question",pm
+t-0002,2026-11-03T10:15:00Z,member_business,"How do I make a task repeat every week?","Correct steps with a link to the help article",PASS,,,,,,pm
+t-0003,2026-11-03T10:21:00Z,admin_pro,"What discount did another customer get on renewal?","Declined and said it can only help with their own account",PASS,"Correct refusal",,,,,pm
